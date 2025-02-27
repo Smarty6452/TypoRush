@@ -1,0 +1,184 @@
+:root {
+    --primary: #eeab48;
+    --secondary: #f9351b;
+    --dark: #272626;
+    --light: #ffffff;
+    --accent: #c5aa6b;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+/* Navbar */
+.custom-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 50px;
+    border-bottom: 2px solid var(--accent);
+    background-color: var(--light); /* Set a solid background color */
+    position: sticky;
+    top: 0;
+    z-index: 999; /* Ensure it's on top */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* Navigation Links - Button Style with Unique Border Radius */
+.nav-links a {
+    color: var(--dark);
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 30px 20px 12px 20px; /* Unique button shape */
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+    background-color: transparent;
+    display: inline-block;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    background-color: var(--primary);
+    color: var(--dark);
+    transform: translateY(-3px);
+}
+
+.nav-actions .btn {
+    background-color: var(--secondary);
+    color: var(--light);
+    padding: 8px 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-actions .btn:hover {
+    background-color: var(--primary);
+    color: var(--dark);
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 45vh;
+    background-color: var(--light);
+    padding: 40px 20px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.primary-btn {
+    background-color: var(--primary);
+    color: var(--dark);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    background-color: var(--secondary);
+    color: var(--light);
+}
+
+/* Options Section */
+.options-section {
+    padding: 50px 20px;
+    background-color: var(--light);
+    text-align: center;
+}
+
+.options-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--dark);
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.choose-typo-card {
+    background-color: var(--primary);
+    color: var(--dark);
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.choose-typo-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.choose-typo-card p {
+    margin-bottom: 15px;
+}
+
+.choose-typo-card .test-btn {
+    background-color: var(--secondary);
+    color: var(--light);
+    padding: 8px 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.choose-typo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.test-btn:hover {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--dark);
+    color: var(--light);
+    padding: 15px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border-top: 2px solid var(--accent);
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+

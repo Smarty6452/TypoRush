@@ -22,11 +22,11 @@ body {
     justify-content: space-between;
     padding: 15px 50px;
     border-bottom: 2px solid var(--accent);
-    background-color: var(--light); /* Set a solid background color */
+    background-color: var(--light); 
     position: sticky;
     top: 0;
-    z-index: 999; /* Ensure it's on top */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    z-index: 999; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .logo {
@@ -35,12 +35,12 @@ body {
     color: var(--primary);
 }
 
-/* Navigation Links - Button Style with Unique Border Radius */
+
 .nav-links a {
     color: var(--dark);
     padding: 8px 15px;
     margin: 0 5px;
-    border-radius: 30px 20px 12px 20px; /* Unique button shape */
+    border-radius: 20px 18px 12px 30px; /* Unique button shape */
     text-decoration: none;
     transition: background-color 0.3s, transform 0.2s;
     background-color: transparent;

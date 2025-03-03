@@ -27,7 +27,6 @@
         </div>
     </header>
 
-    <!-- Typing Test Options -->
     <section id="test-options" class="options-section">
         <h2>Select Your Typing Test Duration</h2>
         <div class="cards-container">
@@ -35,22 +34,36 @@
             <div class="choose-typo-card">
                 <h3>1 Minute Test</h3>
                 <p>Quick challenge to warm up your fingers.</p>
-                <button class="btn test-btn">Start 1-Minute Test</button>
+                <button class="btn test-btn" data-duration="1">Start 1-Minute Test</button>
             </div>
 
             <!-- 3 Minute Card -->
             <div class="choose-typo-card">
                 <h3>3 Minute Test</h3>
                 <p>Maintain your pace and improve consistency.</p>
-                <button class="btn test-btn">Start 3-Minute Test</button>
+                <button class="btn test-btn" data-duration="3">Start 3-Minute Test</button>
             </div>
 
             <!-- 5 Minute Card -->
             <div class="choose-typo-card">
                 <h3>5 Minute Test</h3>
                 <p>Push your limits with an extended typing test.</p>
-                <button class="btn test-btn">Start 5-Minute Test</button>
+                <button class="btn test-btn" data-duration="5">Start 5-Minute Test</button>
             </div>
+        </div>
+    </section>
+
+    <!-- Typing Test Section -->
+    <section class="typing-test">
+        <div class="test-container">
+            <h2>Typing Test</h2>
+            <div id="timer"></div>
+            <p class="typing-text"></p>
+            <textarea id="typing-input" placeholder="Start typing..." autofocus></textarea>
+            <div class="feedback">
+                <p>WPM: <span id="wpm">0</span> | Mistakes: <span id="mistakes">0</span></p>
+            </div>
+            <button class="btn" id="end-test-btn">End Test</button>
         </div>
     </section>
 
@@ -62,6 +75,7 @@
 
 <script type="module" src="./js/auth.js"></script>
 <script type="module" src="./js/utils.js"></script>
+<script type="module" src="./js/index.js"></script>
 
 
 </body>

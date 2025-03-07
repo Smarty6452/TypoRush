@@ -24,7 +24,7 @@ const dynamicNav = () => {
         logoutButton?.addEventListener("click", handleLogout);
     } else {
         getNavActions.innerHTML = `
-            <a href="pages/login.html" class="btn login-btn">Login</a>
+            <a href="../pages/login.html" class="btn login-btn">Login</a>
         `;
     }
 }
@@ -43,7 +43,7 @@ getSigupForm?.addEventListener("submit", (event) => {
         saveUserDetails(username, password); 
         alert("Sign-up successful! Please log in.");
         getSigupForm.reset();
-        window.location.href = "login.html";
+        window.location.href = "../pages/login.html";
     } catch (error) {
         alert(error.message);
     }
@@ -66,7 +66,7 @@ getLoginForm?.addEventListener("submit", (event) => {
         ) {
             alert("Login Successful");
             localStorage.setItem("loggedInUser", username); 
-            window.location.href = "../index.html";
+            window.location.href = "../pages/index.html";
         } else {
             alert("Invalid username or password.");
         }

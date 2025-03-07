@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TypoRush - Typing Speed Tracking App - Home</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
     <!-- Navbar -->
     <nav class="custom-navbar">
-        <div class="logo">TYPORUSH</div>
-        <div class="nav-links">
-            <a href="/pages/index.html" class="active">Home</a>
-            <a href="#">Leadership Board</a>
-        </div>
-        <div class="nav-actions"></div>
+      <div class="logo">TYPORUSH</div>
+      <div class="nav-links">
+        <a href="/pages/index.html" class="active">Home</a>
+        <a href="/pages/test.html">Test</a>
+        <a href="/pages/leaderboard.html">Leaderboard</a>
+      </div>
+      <div class="nav-actions"></div>
     </nav>
 
     <!-- Hero Section -->
@@ -25,78 +26,59 @@
           Challenge yourself with 1, 3, or 5-minute typing tests. Track your
           speed and accuracy!
         </p>
-        <a href="#test-options" class="btn primary-btn">Get Started</a>
+        <section id="test-options" class="options-section">
+          <h2>Select Your Typing Test Duration</h2>
+          <div class="cards-container">
+            <!-- 1 Minute Card -->
+            <div class="choose-typo-card">
+              <h3>1 Minute Test</h3>
+              <p>Quick challenge to warm up your fingers.</p>
+              <button class="btn test-btn" data-duration="1">
+                Start 1-Minute Test
+              </button>
+            </div>
+
+            <!-- 3 Minute Card -->
+            <div class="choose-typo-card">
+              <h3>3 Minute Test</h3>
+              <p>Maintain your pace and improve consistency.</p>
+              <button class="btn test-btn" data-duration="3">
+                Start 3-Minute Test
+              </button>
+            </div>
+
+            <!-- 5 Minute Card -->
+            <div class="choose-typo-card">
+              <h3>5 Minute Test</h3>
+              <p>Push your limits with an extended typing test.</p>
+              <button class="btn test-btn" data-duration="5">
+                Start 5-Minute Test
+              </button>
+            </div>
+          </div>
+        </section>
       </div>
     </header>
 
-    <section id="test-options" class="options-section">
-      <h2>Select Your Typing Test Duration</h2>
-      <div class="cards-container">
-        <!-- 1 Minute Card -->
-        <div class="choose-typo-card">
-          <h3>1 Minute Test</h3>
-          <p>Quick challenge to warm up your fingers.</p>
-          <button class="btn test-btn" data-duration="1">
-            Start 1-Minute Test
-          </button>
-        </div>
-
-        <!-- 3 Minute Card -->
-        <div class="choose-typo-card">
-          <h3>3 Minute Test</h3>
-          <p>Maintain your pace and improve consistency.</p>
-          <button class="btn test-btn" data-duration="3">
-            Start 3-Minute Test
-          </button>
-        </div>
-
-        <!-- 5 Minute Card -->
-        <div class="choose-typo-card">
-          <h3>5 Minute Test</h3>
-          <p>Push your limits with an extended typing test.</p>
-          <button class="btn test-btn" data-duration="5">
-            Start 5-Minute Test
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <div id="results-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Typing Test Results</h2>
-            <div id="modal-results"></div>
-        </div>
-    </div>
-    
-
-    <!-- Typing Test Section -->
-    <section class="typing-test">
-        <div class="test-container">
-            <h2>Typing Test</h2>
-            <div id="timer">Time Left: 60s</div>
-            <p class="typing-text"></p>
-            <textarea id="typing-input" placeholder="Start typing..." autofocus></textarea>
-            <div class="feedback">
-                <p>WPM: <span id="wpm">0</span></p>
-                <p>Mistakes: <span id="mistakes">0</span></p>
-                <p>Accuracy: <span id="accuracy">100%</span></p>  <!-- Accuracy Display -->
-                <p>High Score: <span id="high-score">0 WPM</span></p>  <!-- High Score Display -->
-            </div>
-            <button class="btn" id="end-test-btn">End Test</button>
-        </div>
-        <button class="btn" id="end-test-btn">End Test</button>
-      </div>
+    <section class="check-leaderboard">
+      <!-- TODO: Logic needed: If user is not sign in move user to sign in page then move user to leaderboard page,
+      if user is sign in move to leaderboard page -->
+      <h1>Be On Top</h1>
+      <p>Check how well you did compare to others</p>
+      <button>Show Leaderboard</button>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 TypoRush | Group Project by Team Alpha</p>
-        <p>Team Members: Rohit Bharti, Mary Jain Joshy - 9019215, Member 3, Member 4</p>
+      <p>&copy; 2025 TypoRush | Group Project by Team Alpha</p>
+      <p>
+        Team Members: Rohit Bharti, Mary Jain Joshy - 9019215, Hector Ha, Member
+        4
+      </p>
     </footer>
 
     <script type="module" src="../js/auth.js"></script>
     <script type="module" src="../js/utils.js"></script>
     <script type="module" src="../js/index.js"></script>
-</body>
+  </body>
 </html>

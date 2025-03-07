@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypoRush - Typing Speed Tracking App</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="custom-navbar">
+      <div class="logo">TYPORUSH</div>
+      <div class="nav-links">
+        <a href="/pages/index.html" class="active">Home</a>
+        <a href="/pages/test.html">Test</a>
+        <a href="/pages/leaderboard.html">Leaderboard</a>
+      </div>
+      <div class="nav-actions"></div>
+    </nav>
+    <!-- Show Result -->
+    <div id="results-modal" class="modal">
+      <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h2>Typing Test Results</h2>
+          <div id="modal-results"></div>
+      </div>
+  </div>
+  
+
+    <!-- Typing Test Section -->
+    <section class="typing-test">
+      <div class="test-container">
+          <h2>Typing Test</h2>
+          <div id="timer">Time Left: 60s</div>
+          <p class="typing-text"></p>
+          <textarea id="typing-input" placeholder="Start typing..." autofocus></textarea>
+          <div class="feedback">
+              <p>WPM: <span id="wpm">0</span></p>
+              <p>Mistakes: <span id="mistakes">0</span></p>
+              <p>Accuracy: <span id="accuracy">100%</span></p>  <!-- Accuracy Display -->
+              <p>High Score: <span id="high-score">0 WPM</span></p>  <!-- High Score Display -->
+          </div>
+          <button class="btn" id="end-test-btn">End Test</button>
+      </div>
+      <button class="btn" id="end-test-btn">End Test</button>
+    </div>
+  </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 TypoRush | Group Project by Team Alpha</p>
+      <p>
+        Team Members: Rohit Bharti, Mary Jain Joshy - 9019215, Hector Ha, Member
+        4
+      </p>
+    </footer>
+
+    <script type="module" src="./js/auth.js"></script>
+    <script type="module" src="./js/utils.js"></script>
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>

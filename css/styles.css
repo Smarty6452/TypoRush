@@ -18,7 +18,6 @@ body {
     position: relative; /* Establish a positioning context for the footer */
 }
 
-
 /* Navbar */
 .custom-navbar {
     display: flex;
@@ -218,7 +217,7 @@ form input {
     color: var(--light);
     padding: 10px 20px;
     border: none;
-    border-radius: 8px;
+    border-radius: 3px;
     width: 100%;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -272,6 +271,133 @@ form input {
 .right-nav-detail .logout-btn:hover {
     background-color: #d32f2f;
 }
+#results-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#close-popup {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#close-popup:hover {
+    background: #0056b3;
+}
+
+.m.modal {
+    display: none;  /* Initially hidden */
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal-content {
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: -22px;
+    right: 15px;
+    left: 200px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+/* Funky Feedback Styles */
+.feedback {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #f9351b, rgb(229, 62, 84));
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.feedback p {
+    margin: 0 10px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 1.1em;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    padding: 5px 10px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.feedback p:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.3);
+}
+
+.feedback p span {
+    color: #f0f0f0;
+    font-size: 1.2em;
+    position: relative;
+    z-index: 1;
+}
+
+/* Timer Styling */
+#timer {
+    display: none; /* Initially hidden */
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin: 15px 0;
+    padding: 10px;
+    background:linear-gradient(135deg, #f9351b, rgb(229, 62, 84));
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s ease;
+}
+
+#timer.visible {
+    display: block;
+}
+
+#timer.pulse {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+
 
 @media (max-width: 600px) {
     .right-nav-detail {
@@ -282,6 +408,10 @@ form input {
     .right-nav-detail .logout-btn {
         font-size: 10px;
         padding: 4px 8px;
+    }
+    #timer {
+        font-size: 2.5rem;
+        padding: 20px 40px;
     }
 }
 
@@ -325,10 +455,11 @@ p a:hover {
 .incorrect { color: red; }
 
 #typing-input {
-    width: 100%;
+    width: 96%;
     padding: 10px;
-    margin-top: 10px;
+    margin:20px 20px 20px 20px;
     font-size: 18px;
+    align-items: center;
 }
 
 

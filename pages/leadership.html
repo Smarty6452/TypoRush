@@ -1,81 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leadership Board - TypoRush</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
     <nav class="custom-navbar">
-        <div class="logo">TYPORUSH</div>
-        <div class="nav-links">
-            <a href="../pages/index.html">Home</a>
-            <a href="../pages/leadership.html" class="active">Leadership Board</a>
-        </div>
-        <div class="nav-actions"></div>
+      <div class="logo">TYPORUSH</div>
+      <div class="nav-links">
+        <a href="/pages/index.html" class="active">Home</a>
+        <a href="/pages/test.html">Test</a>
+        <a href="/pages/leadership.html">Leaderboard</a>
+      </div>
+      <div class="nav-actions"></div>
     </nav>
 
     <section class="leaderboard-section">
-        <h2>Leadership Board</h2>
-        <h1 style="color: #e74c3c; text-align: center;">Welcome <span id="loggedInUser"></span>!</h1>
-        <div class="leaderboard-container">
-            <h3>Top 10 Typists</h3>
-            <div id="top-scores"></div>
-            <div id="user-rank" class="leaderboard-item user-rank" style="margin-top: 20px; background: #ecf0f1;"></div>
-        </div>
+      <h2>Leadership Board</h2>
+      <h1>Welcome <span id="loggedInUser"></span>!</h1>
+      <div class="leaderboard-container">
+        <h3>Top 10 Typists</h3>
+        <div id="top-scores"></div>
+        <div id="user-rank" class="leaderboard-item user-rank"></div>
+      </div>
     </section>
 
     <footer class="footer">
-        <p>© 2025 TypoRush | Group Project by Team Alpha</p>
+      <p>© 2025 TypoRush | Group Project by Team Alpha</p>
     </footer>
 
     <script type="module" src="../js/auth.js"></script>
     <script type="module" src="../js/leadership.js"></script>
-
-    <style>
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            z-index: 1000;
-        }
-        .leaderboard-section {
-            max-width: 800px;
-            margin: 50px auto;
-            text-align: center;
-        }
-        .leaderboard-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .leaderboard-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px;
-            border-bottom: 1px solid #eee;
-            font-size: 1.1em;
-        }
-        .leaderboard-rank {
-            font-weight: bold;
-        }
-        .leaderboard-score {
-            font-weight: bold;
-        }
-        .top-1 { color: #FFD700; } /* Gold */
-        .top-2 { color: #C0C0C0; } /* Silver */
-        .top-3 { color: #CD7F32; } /* Bronze */
-        .user-rank {
-            border: 2px solid #3498db;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-    </style>
-</body>
+  </body>
 </html>

@@ -22,4 +22,10 @@ const validateCredentials = (username, password) => {
   }
 };
 
-export { getStoredUserDetails, getLoggedInUser, saveUserDetails, clearUserSession, validateCredentials };
+export {
+  getStoredUserDetails,
+  getLoggedInUser,
+  saveUserDetails,
+  clearUserSession,
+  validateCredentials,
+};

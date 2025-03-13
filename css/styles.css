@@ -171,6 +171,7 @@ a:hover {
 .check-leaderboard {
   text-align: center;
   padding: 50px 20px;
+  margin-bottom: 120px;
 }
 
 .check-leaderboard h1 {
@@ -183,7 +184,7 @@ a:hover {
   margin-bottom: 20px;
 }
 
-.check-leaderboard button {
+.check-leaderboard .btn {
   background-color: #ffaa00;
   animation: pulse 2s infinite;
 }

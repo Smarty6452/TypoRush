@@ -11,3 +11,5 @@ Create Leadership page
 Add css style
 If login properly, fetch the username from local stroage .
 Display the username in the leadership page with welcome message.
+
+Hector: Make and unify the web's beautiful look and animation through CSS. Add a way to let people know where they are in the typing test. Establish routes for the website CTAs. 

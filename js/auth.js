@@ -19,7 +19,7 @@ const dynamicNav = () => {
   const loggedInUser = getLoggedInUser();
   if (loggedInUser) {
     const storedUserDetails = getStoredUserDetails();
-    getNavActions.html(`  // Query: Updating navbar with logged-in user details
+    getNavActions.html(`  
       <div class="right-nav-detail">
         <span class="user-profile-text">${storedUserDetails.username}</span>
         <button class="btn logout-btn" id="logoutButton">Logout</button>
@@ -28,7 +28,7 @@ const dynamicNav = () => {
 
     $("#logoutButton").on("click", handleLogout); //  Logout button click handler
   } else {
-    getNavActions.html(`  // Query: Updating navbar for logged-out user
+    getNavActions.html(`  
       <a href="login.html" class="btn login-btn">Login</a>
     `);
   }

@@ -1,4 +1,6 @@
-// Destructuring utility functions to modularity and resuability.
+"use strict"; // strict mode
+
+// Destructuring utility functions for modularity and reusability
 import {
   getStoredUserDetails,
   getLoggedInUser,
@@ -7,35 +9,33 @@ import {
   validateCredentials,
 } from "./utils.js";
 
-// Collecting the reference of both forms and navbar
-const getSigupForm = document.querySelector("#signUpForm");
-const getLoginForm = document.querySelector("#loginForm");
-const getNavActions = document.querySelector(".nav-actions");
+// Collecting references for forms and navbar
+const getSignupForm = $("#signUpForm"); //  Sign-up form element
+const getLoginForm = $("#loginForm"); //  Login form element
+const getNavActions = $(".nav-actions"); //  Navbar action elements
 
 // Dynamic Navbar Update
 const dynamicNav = () => {
   const loggedInUser = getLoggedInUser();
   if (loggedInUser) {
     const storedUserDetails = getStoredUserDetails();
-    // Use the username from the storedUserDetails
-    getNavActions.innerHTML = `
-            <div class="right-nav-detail">
-                <span class="user-profile-text"> ${storedUserDetails.username}</span>
-                <button class="btn logout-btn" id="logoutButton">Logout</button>
-            </div>
-        `;
+    getNavActions.html(`  // Query: Updating navbar with logged-in user details
+      <div class="right-nav-detail">
+        <span class="user-profile-text">${storedUserDetails.username}</span>
+        <button class="btn logout-btn" id="logoutButton">Logout</button>
+      </div>
+    `);
 
-    const logoutButton = document.getElementById("logoutButton");
-    logoutButton?.addEventListener("click", handleLogout);
+    $("#logoutButton").on("click", handleLogout); //  Logout button click handler
   } else {
-    getNavActions.innerHTML = `
-            <a href="login.html" class="btn login-btn">Login</a>
-        `;
+    getNavActions.html(`  // Query: Updating navbar for logged-out user
+      <a href="login.html" class="btn login-btn">Login</a>
+    `);
   }
 };
 
-// Function for Sign-up
-getSigupForm?.addEventListener("submit", (event) => {
+// Sign-up Function
+getSignupForm?.on("submit", (event) => {  //Sign-up form submission
   event.preventDefault();
   try {
     const username = event.target.username.value.trim();
@@ -45,17 +45,16 @@ getSigupForm?.addEventListener("submit", (event) => {
 
     saveUserDetails(username, password);
     alert("Sign-up successful! Please log in.");
-    getSigupForm.reset();
+    getSignupForm[0].reset(); // Reset the sign-up form
     window.location.href = "login.html";
   } catch (error) {
     alert(error.message);
   }
 });
 
-// Function for Login
-getLoginForm?.addEventListener("submit", (event) => {
+// Login Function
+getLoginForm?.on("submit", (event) => {  // Login form submission
   event.preventDefault();
-
   try {
     const username = event.target.username.value.trim();
     const password = event.target.password.value.trim();
@@ -79,13 +78,13 @@ getLoginForm?.addEventListener("submit", (event) => {
 });
 
 // Logout Function
-const handleLogout = () => {
+const handleLogout = () => {  // Handling logout functionality
   alert("Logging out...");
-  clearUserSession(); // Clear session data
+  clearUserSession();
   alert("Logged out successfully!");
   window.location.href = "login.html";
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+$(document).ready(() => {  //Document ready
   dynamicNav();
 });

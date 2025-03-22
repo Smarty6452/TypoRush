@@ -1,11 +1,16 @@
+"use strict"; // strict mode
+
+// Export function to start the typing test
 export function startTypingTest(duration) {
-  const typingTextElement = document.querySelector(".typing-text");
-  const typingInput = document.querySelector("#typing-input");
-  const wpmDisplay = document.querySelector("#wpm");
-  const mistakesDisplay = document.querySelector("#mistakes");
-  const timerDisplay = document.querySelector("#timer");
-  const accuracyDisplay = document.querySelector("#accuracy");
-  const timer = document.getElementById("timer");
+
+  //  selectors
+  const typingTextElement = $(".typing-text");      
+  const typingInput = $("#typing-input");          
+  const wpmDisplay = $("#wpm");                    
+  const mistakesDisplay = $("#mistakes");     
+  const timerDisplay = $("#timer");                 
+  const accuracyDisplay = $("#accuracy");           
+  const timer = $("#timer");                       
 
   const typingTexts = {
     1: "Bursting with imagery, motion, interaction and distraction though it is, today's World Wide Web is still primarily a conduit for textual information.",
@@ -21,89 +26,92 @@ export function startTypingTest(duration) {
   let isTestActive = false;
   const testText = typingTexts[duration];
 
-  // Format time as mm:ss
+  //  Format time as mm:ss
   function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${minutes}:${secs.toString().padStart(2, "0")}`;
   }
 
-  // Render text with spans
+  //  Render the typing text with jQuery
   function renderTypingText() {
-    typingTextElement.innerHTML = testText
-      .split("")
-      .map((char, i) => `<span class="char${i === 0 ? " current" : ""}">${char}</span>`)
-      .join("");
+    typingTextElement.html(
+      testText
+        .split("")
+        .map((char, i) => `<span class="char${i === 0 ? " current" : ""}">${char}</span>`)
+        .join("")
+    );
   }
 
-  // Reset the test state
+  //  Reset the test state with jQuery
   function resetTest() {
     clearInterval(timerInterval);
     remainingTime = duration * 60;
     mistakes = charIndex = 0;
-    typingInput.value = "";
-    typingInput.removeEventListener("input", handleTyping);
+    typingInput.val("");                             // clear input field
+    typingInput.off("input", handleTyping);          //remove event listener
     renderTypingText();
-    timerDisplay.textContent = `Time Left: ${formatTime(remainingTime)}`;
-    wpmDisplay.textContent = "0";
-    mistakesDisplay.textContent = "0";
-    accuracyDisplay.textContent = "100%";
+    timerDisplay.text(`Time Left: ${formatTime(remainingTime)}`);   // Update using jQuery
+    wpmDisplay.text("0");
+    mistakesDisplay.text("0");
+    accuracyDisplay.text("100%");
     isTestActive = false;
   }
 
-  // Handle typing input
+  // Handle typing 
   function handleTyping() {
     if (!isTestActive) return;
-    const typedText = typingInput.value;
-    const chars = typingTextElement.querySelectorAll(".char");
+    const typedText = typingInput.val();
+    const chars = $(".char");                        // Select all characters with 
 
     mistakes = 0;
-    chars.forEach((span, i) => {
-      span.classList.remove("current", "correct", "incorrect");
+    chars.each((i, span) => {                        // Iterate over each character using 
+      $(span).removeClass("current correct incorrect");  // Remove all classes
+
       if (i < typedText.length) {
         if (typedText[i] === testText[i]) {
-          span.classList.add("correct");
+          $(span).addClass("correct");               //  'correct' class if matched
         } else {
-          span.classList.add("incorrect");
+          $(span).addClass("incorrect");             //  'incorrect' class if mismatched
           mistakes++;
         }
       }
-      if (i === typedText.length) span.classList.add("current");
+      if (i === typedText.length) $(span).addClass("current");   // Highlight current character
     });
 
     charIndex = Math.min(typedText.length, testText.length);
     updateStats();
   }
 
-  // Update WPM and accuracy
+  //  Update WPM and accuracy with jQuery
   function updateStats() {
     const elapsedMinutes = (Date.now() - startTime) / 60000;
     const wordsTyped = Math.max(0, (charIndex - mistakes) / 5);
     const wpm = elapsedMinutes > 0 ? Math.round(wordsTyped / elapsedMinutes) : 0;
     const accuracy = charIndex > 0 ? Math.round(((charIndex - mistakes) / charIndex) * 100) : 100;
 
-    wpmDisplay.textContent = wpm;
-    mistakesDisplay.textContent = mistakes;
-    accuracyDisplay.textContent = `${accuracy}%`;
+    wpmDisplay.text(wpm);                            
+    mistakesDisplay.text(mistakes);                  
+    accuracyDisplay.text(`${accuracy}%`);            
   }
 
   // Start the timer
   function startTimer() {
     timerInterval = setInterval(() => {
       remainingTime--;
-      timerDisplay.textContent = `Time Left: ${formatTime(remainingTime)}`;
+      timerDisplay.text(`Time Left: ${formatTime(remainingTime)}`);   // timer display
       if (remainingTime <= 0) {
         endTypingTest();
       }
     }, 1000);
   }
 
-  // End the test and show results
+  //  End the test and show results
   function endTypingTest() {
     if (!isTestActive) return;
     isTestActive = false;
     clearInterval(timerInterval);
-    timer.classList.remove("visible", "pulse");
+    timer.removeClass("visible pulse");           
 
     const elapsedSeconds = Math.max(1, Math.round((Date.now() - startTime) / 1000));
     const wordsTyped = Math.max(0, (charIndex - mistakes) / 5);
@@ -114,7 +122,7 @@ export function startTypingTest(duration) {
     showResults(elapsedSeconds, wpm, mistakes, accuracy);
   }
 
-  // Save score to leaderboard
+  //  Save score with localStorage
   function saveScore(wpm) {
     const username = localStorage.getItem("loggedInUser") || "Guest";
     let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
@@ -123,54 +131,59 @@ export function startTypingTest(duration) {
     localStorage.setItem("leaderboard", JSON.stringify(leaderboard.slice(0, 10)));
   }
 
-  // Display results in modal
+  //  Display results in modal with jQuery
   function showResults(time, wpm, mistakes, accuracy) {
-    const modal = document.getElementById("results-modal");
-    const modalResults = document.getElementById("modal-results");
-    modalResults.innerHTML = `
+    const modal = $("#results-modal");                //  modal
+    const modalResults = $("#modal-results");         // modal content
+
+    modalResults.html(`
       <div class="result-item">Time: ${formatTime(time)}</div>
       <div class="result-item">WPM: ${wpm}</div>
       <div class="result-item">Mistakes: ${mistakes}</div>
       <div class="result-item">Accuracy: ${accuracy}%</div>
-    `;
-    modal.style.display = "block";
-    modal.classList.add("fadeInModal");
+    `);
+
+    modal.fadeIn(500).addClass("fadeInModal");       // fade-in effect
   }
 
-  // Initialize test
+  //  Initialize test
   resetTest();
   startTime = Date.now();
   isTestActive = true;
   startTimer();
   typingInput.focus();
-  typingInput.addEventListener("input", handleTyping);
+  typingInput.on("input", handleTyping);             // Use jQuery event handling
 
-  // Event listeners
-  document.querySelector(".close-btn")?.addEventListener("click", () => {
-    document.getElementById("results-modal").style.display = "none";
+  //  Event listeners 
+  $(".close-btn").on("click", () => {                //  click event
+    $("#results-modal").fadeOut(500);                //  fade-out effect
   });
-  document.querySelector("#end-test-btn")?.addEventListener("click", endTypingTest);
+
+  $("#end-test-btn").on("click", endTypingTest);     //  event listener
 }
 
-// DOMContentLoaded event handlers
-document.addEventListener("DOMContentLoaded", () => {
-  const testButtons = document.querySelectorAll(".test-btn");
-  testButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const duration = parseInt(btn.dataset.duration);
+//  DOMContentLoaded event handlers using jQuery
+$(document).ready(() => {
+  const testButtons = $(".test-btn");
+
+  //  Add event listener for each test button 
+  testButtons.each(function () {
+    $(this).on("click", () => {
+      const duration = parseInt($(this).data("duration"));
       window.location.href = `/pages/test.html?duration=${duration}`;
     });
   });
 
-  const leaderboardBtn = document.querySelector(".check-leaderboard button");
-  leaderboardBtn?.addEventListener("click", () => {
+  const leaderboardBtn = $(".check-leaderboard button");
+
+  leaderboardBtn?.on("click", () => {               
     const loggedInUser = localStorage.getItem("loggedInUser");
     window.location.href = loggedInUser ? "/pages/leaderboard.html" : "/pages/login.html";
   });
 
-  // Set active nav link
+  //  Set active navigation link using jQuery
   const currentPath = window.location.pathname;
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    link.classList.toggle("active", link.getAttribute("href") === currentPath);
+  $(".nav-links a").each(function () {
+    $(this).toggleClass("active", $(this).attr("href") === currentPath);
   });
 });

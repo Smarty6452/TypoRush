@@ -1,28 +1,30 @@
+"use strict"; // strict mode
+
 import { startTypingTest } from "./index.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  const timer = document.getElementById("timer");
-  const typingInput = document.getElementById("typing-input");
+$(document).ready(() => {
+  const $timer = $("#timer");
+  const $typingInput = $("#typing-input");
 
-  // Get duration from URL
+  // get duration from URL
   const urlParams = new URLSearchParams(window.location.search);
   const duration = parseInt(urlParams.get("duration"));
 
   if (duration) {
-    // Show timer animation
-    if (timer) {
-      timer.classList.add("visible", "pulse");
+    // show timer animation
+    if ($timer.length) {
+      $timer.addClass("visible pulse"); // add classes for visibility and animation
     }
 
-    // Start the test with the specified duration
+    // start the test with the specified duration
     startTypingTest(duration);
 
-    // Focus input field
-    if (typingInput) {
-      typingInput.focus();
+    // focus input field
+    if ($typingInput.length) {
+      $typingInput.focus(); //  focus the input field
     }
   } else {
     console.error("No duration specified - Redirecting to home");
-    window.location.href = "/pages/index.html";
+    window.location.href = "/pages/index.html"; // redirect if no duration is specified
   }
 });
